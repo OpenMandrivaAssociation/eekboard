@@ -1,0 +1,30 @@
+From e212262f29e022bdf7047861263ceea0c373e916 Mon Sep 17 00:00:00 2001
+From: Daiki Ueno <ueno@unixuser.org>
+Date: Mon, 1 Oct 2012 11:46:44 +0900
+Subject: [PATCH] Stop key-repeat when the server receives a new D-Bus event.
+
+Key-repeat timer should be cleared when the server receives a new D-Bus.
+Fixes: https://bugzilla.redhat.com/show_bug.cgi?id=857977
+---
+ eekboard/eekboard-context-service.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/eekboard/eekboard-context-service.c b/eekboard/eekboard-context-service.c
+index 4eeab66..2e2c46d 100644
+--- a/eekboard/eekboard-context-service.c
++++ b/eekboard/eekboard-context-service.c
+@@ -750,6 +750,11 @@ handle_method_call (GDBusConnection       *connection,
+     EekboardContextService *context = user_data;
+     EekboardContextServiceClass *klass = EEKBOARD_CONTEXT_SERVICE_GET_CLASS(context);
+     
++    if (context->priv->repeat_timeout_id) {
++        g_source_remove (context->priv->repeat_timeout_id);
++        context->priv->repeat_timeout_id = 0;
++    }
++
+     if (g_strcmp0 (method_name, "AddKeyboard") == 0) {
+         const gchar *keyboard_type;
+         static guint keyboard_id = 0;
+-- 
+1.7.11.7
+
