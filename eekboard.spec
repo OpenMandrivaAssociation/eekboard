@@ -1,12 +1,12 @@
 Name:		eekboard
 Version:	1.0.8
-Release:	5%{?dist}
+Release:	6
 Summary:	Yet Another Virtual Keyboard
 
 Group:		System/X11
 License:	GPLv3+
 URL:		http://fedorahosted.org/eekboard/
-Source0:	http://github.com/downloads/ueno/eekboard/eekboard-%{version}.tar.gz
+Source0:	https://github.com/ueno/eekboard/archive/refs/tags/eekboard-%{version}.tar.gz
 Patch0:		eekboard-stop-key-repeat.patch
 BuildRequires:	gnome-common, gettext-devel
 BuildRequires:	pkgconfig(xtst)
