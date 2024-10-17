@@ -5,7 +5,7 @@ Summary:	Yet Another Virtual Keyboard
 
 Group:		System/X11
 License:	GPLv3+
-URL:		http://fedorahosted.org/eekboard/
+URL:		https://fedorahosted.org/eekboard/
 Source0:	https://github.com/ueno/eekboard/archive/refs/tags/eekboard-%{version}.tar.gz
 Patch0:		eekboard-stop-key-repeat.patch
 BuildRequires:	gnome-common, gettext-devel
