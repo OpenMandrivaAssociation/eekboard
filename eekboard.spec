@@ -8,6 +8,11 @@ License:	GPLv3+
 URL:		https://fedorahosted.org/eekboard/
 Source0:	https://github.com/ueno/eekboard/archive/refs/tags/eekboard-%{version}.tar.gz
 Patch0:		eekboard-stop-key-repeat.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gnome-common, gettext-devel
 BuildRequires:	pkgconfig(xtst)
 BuildRequires:	pkgconfig(gtk+-3.0)
